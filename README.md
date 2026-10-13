@@ -1,46 +1,77 @@
-# Time Series Analysis – Case 1
+# Time Series Analysis — Case 1
 
-This repository is organized around a single case study in time series analysis, with each major topic kept in its own branch. The goal is to keep the workflow readable, modular, and easy to navigate without mixing different analytical methods in the same branch.
+A focused case study in time-series forecasting for the Citi Bike dataset. The project is organized by topic: each analytical track lives in its own folder under the repository root and includes a topic README with step‑by‑step instructions to run the code.
 
-## Repository structure
+## Quick overview
+- Data: citibike.RData (in repository root)
+- Language: R (scripts and analysis notebooks)
+- Each topic folder contains: scripts, example inputs/outputs (when applicable) and a README that explains dependencies and how to run the code for that topic.
 
-The project is structured as follows:
+## Project layout
+The meaningful top-level folders are:
 
-- `main` — landing page and repository overview; this is the branch you are reading now.
-- `Data-Exploration` — initial data inspection, cleaning, visual exploration, and understanding of the time series behavior.
-- `Exponential-Smoothing-Model` — implementation and evaluation of exponential smoothing approaches.
-- `ARIMA-and-SARIMA` — ARIMA and Seasonal ARIMA modeling, diagnostics, and interpretation.
-- `Forecast-Reconciliation` — forecasting reconciliation methods and aggregation of forecast outputs.
-- `Seasonal-Unit-Root-test` — tests for seasonal stationarity and unit-root-related diagnostics.
+Data Exploration/
+  - exploratory plots, scripts to inspect data and visualize patterns
+ARIMA and SARIMA/
+  - ARIMA/SARIMA modeling, diagnostics, out-of-sample evaluation, DM/MCS tests
+Exponential-Smoothing-Model/
+  - ETS (exponential smoothing) modeling and rolling/expanding-window forecasts
+Forecast Reconciliation/
+  - methods and scripts to reconcile forecasts across aggregation levels
+(Seasonal) Unit Root Test/
+  - seasonal unit-root and stationarity diagnostics and example workflows
 
-## Why this structure?
+Files at repository root:
+- citibike.RData — primary dataset used by the example scripts
+- README.md — this file
 
-Each branch represents one analytical topic of the case study. This approach helps us:
+Note: Some folders may include small helper files and cached results (e.g., grid cache `.rds` files or CSVs). See the folder README for details.
 
-- keep methods isolated and easy to compare,
-- avoid mixing exploratory, modeling, and validation work in one place,
-- maintain a clear progression from data understanding to forecasting,
-- make it easier for collaborators to review and discuss one topic at a time.
+## Short guide — from clone to running a topic
 
-## Recommended workflow
+1. Clone the repository:
+   git clone https://github.com/peterboeckenhoff/Time-Series-Analysis---Case-1---JTP.git
+   cd Time-Series-Analysis---Case-1---JTP
 
-1. Start in `main` to get the overall context of the project.
-2. Switch to the topic branch relevant to the analysis you want to review or continue.
-3. Work on that topic independently before moving to the next modeling step.
-4. Use the repository overview in `main` as the map for the full case study.
+2. Open R or RStudio. Install the packages required by the topic you plan to run (each topic README lists exact dependencies). Example (run in R):
+   install.packages(c("tidyr","ggplot2","dplyr","forecast","MCS"))
 
-## Typical case-study flow
+3. Data file:
+   Ensure `citibike.RData` is present in the working directory (it is included at the repo root). Topic scripts expect the data file in the same folder or will ask you to set the working directory accordingly — check the topic README.
 
-A natural progression is:
+4. Run a topic
+   - Open the folder for the topic you want (e.g., `ARIMA and SARIMA/`) and read its README.
+   - Typical workflows:
+     - In RStudio: Session → Set Working Directory → To Source File Location, then open the main script and run it or use source("script.R").
+     - From R console: setwd("ARIMA and SARIMA"); source("Complete_code_combined.R")
 
-- `Data-Exploration` → understand the data and identify patterns
-- `Seasonal-Unit-Root-test` → assess stationarity and seasonal dynamics
-- `ARIMA-and-SARIMA` → model autocorrelation and seasonality
-- `Exponential-Smoothing-Model` → test baseline forecasting approaches
-- `Forecast-Reconciliation` → combine or reconcile forecast outputs
+   Each topic README explains:
+   - required R packages and installation commands,
+   - which script(s) to run,
+   - required input files and expected outputs,
+   - helpful runtime options (e.g., TEST_MODE or cached grid files).
 
-## Notes
+## Recommended study order
+A sensible progression for understanding the case study:
+1. Data Exploration — inspect and visualize the data
+2. (Seasonal) Unit Root Test — assess stationarity and seasonal behavior
+3. ARIMA and SARIMA — fit autoregressive models and evaluate
+4. Exponential-Smoothing-Model — ETS baselines and diagnostics
+5. Forecast Reconciliation — combine or reconcile forecasts
 
-This branch-based layout is intentional: the repository is not organized as a single monolithic project, but as a collection of focused analytical tracks. Each branch documents a distinct part of the same case study while preserving a clean and structured project history.
+## Reproducibility and runtime notes
+- Some scripts (SARIMA grid search, MCS bootstrap) can be slow; look for cached files in the topic folders (`grid_cache_*.rds`, `results/`) to avoid long reruns.
+- Many scripts include a TEST_MODE or similar switch to run short example cases — check the topic README.
+- Random seeds are often fixed in testing/bootstrapping steps; consult the topic README if you need to reproduce exact results.
 
-If you are new to the project, begin with `main` and then navigate to the relevant topic branch for the section you want to study.
+## Where to look next
+Open the README inside the folder for the topic you want to run:
+- Data Exploration/README-Data Exploration.md
+- ARIMA and SARIMA/README.md
+- Exponential-Smoothing-Model/README.md
+- Forecast Reconciliation/ (check the folder README)
+- (Seasonal) Unit Root Test/ (check the folder README)
+
+If you want, I can:
+- commit this README.md to the `main` branch, or
+- produce a shorter “landing” README with links to each topic README (if you prefer a more link-focused home page).
