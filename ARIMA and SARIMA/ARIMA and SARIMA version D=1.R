@@ -9,7 +9,7 @@ install.packages("forecast")
 library(forecast)  # Arima(), auto.arima(), forecast(), checkresiduals()
 
 ## ---- 1. Load data --------------------------------------------
-load("C:/Users/janne/OneDrive/Documents/Time Series Analytics/Case/citibike.RData")
+setwd("C:/Users/janne/OneDrive/Documents/Time Series Analytics/Case")
 
 
 data_citibike$datetime <- as.POSIXct(
