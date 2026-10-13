@@ -10,16 +10,11 @@ A focused case study in time-series forecasting for the Citi Bike dataset. The p
 ## Project layout
 The meaningful top-level folders are:
 
-Data Exploration/
-  - exploratory plots, scripts to inspect data and visualize patterns
-ARIMA and SARIMA/
-  - ARIMA/SARIMA modeling, diagnostics, out-of-sample evaluation, DM/MCS tests
-Exponential-Smoothing-Model/
-  - ETS (exponential smoothing) modeling and rolling/expanding-window forecasts
-Forecast Reconciliation/
-  - methods and scripts to reconcile forecasts across aggregation levels
-(Seasonal) Unit Root Test/
-  - seasonal unit-root and stationarity diagnostics and example workflows
+- Data Exploration: exploratory plots, scripts to inspect data and visualize patterns
+- (Seasonal) Unit Root Test: seasonal unit-root and stationarity diagnostics and example workflows
+- ARIMA and SARIMA: ARIMA/SARIMA modeling, diagnostics, out-of-sample evaluation, DM/MCS tests
+- Exponential-Smoothing-Model: ETS (exponential smoothing) modeling and rolling/expanding-window forecasts
+- Forecast Reconciliation: methods and scripts to reconcile forecasts across aggregation levels
 
 Files at repository root:
 - citibike.RData — primary dataset used by the example scripts
@@ -71,7 +66,3 @@ Open the README inside the folder for the topic you want to run:
 - Exponential-Smoothing-Model/README.md
 - Forecast Reconciliation/ (check the folder README)
 - (Seasonal) Unit Root Test/ (check the folder README)
-
-If you want, I can:
-- commit this README.md to the `main` branch, or
-- produce a shorter “landing” README with links to each topic README (if you prefer a more link-focused home page).
